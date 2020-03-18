@@ -5,7 +5,7 @@
 	padding: 0;
 }
 
-header {
+.container-header {
 	height: 80px;
 	width: 100%;
 	background-color: lightgrey;
@@ -27,4 +27,35 @@ header {
 	padding: 6px;
 	background-color: grey;
 	color: white;
+}
+.container {
+	display: flex;
+	margin: 0 auto;
+	width: 1080px;
+	height: 100%;
+	flex-wrap: wrap;
+}
+.container-card {
+	padding: 50px;
+}
+.card {
+	height: 300px;
+	flex-basis: 200px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: grey;
+	border-radius: 10px;
+	margin: 10px;
+}
+.card h3 {
+	color: white;
+}
+.card span {
+	color: white;
+}
+.card img {
+	height: 180px;
+	margin-bottom: 20px;
 }

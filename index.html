@@ -6,17 +6,40 @@
 		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 		<link rel="stylesheet" href="css/style.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js" charset="utf-8"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<header>
 			<div class="container-header">
 				<div class="topnav">
-					<input type="text" placeholder="Cerca...">
+					<input id='cerca-film' placeholder="Cerca...">
 					<i class="fas fa-search"></i>
 				</div>
 			</div>
 		</header>
+
+		<div class="container container-card">
+			<div class="card">
+ 			   <div class="card-film">
+ 				   <span>Titolo</span></p>
+ 				   <span>Titolo Originale</span></p>
+ 				   <span>Lingua</span></p>
+ 				   <span>Voto</span></p>
+ 			   </div>
+ 		   </div>
+
+
+		<script id="card-template" type="text/x-handlebars-template">
+		   <div class="card">
+			   <div class="card-film">
+				   <p>Titolo Film: <span>{{title}}</span></p>
+				   <p>Titolo originale: <span>{{originalTitle}}</span></p>
+				   <p>Lingua: <span>{{originalLanguage}}</span></p>
+				   <p>Voto: <span>{{vote}}</span></p>
+			   </div>
+		   </div>
+	   </script>
 
 		<script src="js/main.js"></script>
 	</body>
