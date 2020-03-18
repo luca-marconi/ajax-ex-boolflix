@@ -1,4 +1,5 @@
-
+var source = $("#card-template").html();
+var cardTemplate = Handlebars.compile(source);
 
     $('#cerca-film').change(function () {
         var carattereRicerca = $('#cerca-film').val().toLowerCase();
@@ -19,11 +20,14 @@
                 var films = data.results;
                 for (var i = 0; i < films.length; i++) {
                     var film = films[i];
-                        console.log('il titolo del Film è: ' + film.title);
-                        console.log('Il titolo origiinale del film è: ' + film.original_title);
-                        console.log('La lingua del film è: ' + film.original_language);
-                        console.log('Il voto del film è: ' + film.vote_average);
-                        console.log('---------------------------');
+                    var filmTemplate = {
+                        title: film.title,
+                        originalTitle: film.original_title,
+                        originalLanguage: film.original_language,
+                        vote: film.vote_average
+                    }
+                    var cardFilm = cardTemplate(filmTemplate);
+                    $('.container-card').append(cardFilm);
                 }
             },
             error: function (err) {
