@@ -4,6 +4,7 @@ var cardTemplate = Handlebars.compile(source);
     $('#cerca-film').change(function () {
         var carattereRicerca = $('#cerca-film').val().toLowerCase();
         $('#cerca-film').val('');
+
         var apiBaseUrl = 'https://api.themoviedb.org/3';
 
         $.ajax({
@@ -29,6 +30,9 @@ var cardTemplate = Handlebars.compile(source);
                     var cardFilm = cardTemplate(filmTemplate);
                     $('.container-card').append(cardFilm);
                 }
+                $('.fa-search, #cerca-film').click(function () {
+                    $('.card').hide();
+                })
             },
             error: function (err) {
                 alert('BOOM');
