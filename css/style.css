@@ -4,3 +4,27 @@
 	margin: 0;
 	padding: 0;
 }
+
+header {
+	height: 80px;
+	width: 100%;
+	background-color: lightgrey;
+}
+.topnav {
+	height: 80px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding-right: 20px;
+}
+.topnav input {
+  float: right;
+  padding: 6px;
+  border: none;
+  font-size: 17px;
+}
+.topnav i {
+	padding: 6px;
+	background-color: grey;
+	color: white;
+}

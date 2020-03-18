@@ -9,8 +9,8 @@ $(document).ready(function() {
         // url: 'https://api.themoviedb.org/3/search/movie',
         url: apiBaseUrl + '/search/movie',
         data: {
-            api_key: 'e99307154c6dfb0b4750f6603256716d',
-            query: 'ritorno al futuro',
+            api_key: 'e50a20205b1bb8fb469327d3702d0bfd',
+            query: 'Harry Potter',
             language: 'it-IT'
         },
         method: 'GET',
