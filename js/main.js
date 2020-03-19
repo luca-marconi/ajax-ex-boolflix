@@ -1,14 +1,13 @@
 var source = $("#card-template").html();
 var cardTemplate = Handlebars.compile(source);
+var apiBaseUrl = 'https://api.themoviedb.org/3';
 
     $('#cerca-film').change(function () {
         var carattereRicerca = $('#cerca-film').val().toLowerCase();
-        $('#cerca-film').val('');
-
-        var apiBaseUrl = 'https://api.themoviedb.org/3';
-
+        console.log(carattereRicerca);
+        $('.container-card').html("");
         $.ajax({
-            // url: 'https://api.themoviedb.org/3/search/movie?api_key=e99307154c6dfb0b4750f6603256716d&query=ritorno+al+futuro',
+            // url: 'https://api.themoviedb.org/3/search/movie?api_key=e50a20205b1bb8fb469327d3702d0bfd&query=aladin',
             // url: 'https://api.themoviedb.org/3/search/movie',
             url: apiBaseUrl + '/search/movie',
             data: {
@@ -19,23 +18,27 @@ var cardTemplate = Handlebars.compile(source);
             method: 'GET',
             success: function (data) {
                 var films = data.results;
+                console.log(films);
                 for (var i = 0; i < films.length; i++) {
                     var film = films[i];
                     var filmTemplate = {
                         title: film.title,
                         originalTitle: film.original_title,
                         originalLanguage: film.original_language,
-                        vote: film.vote_average
+                        vote: arrotondaVoto(film.vote_average)
                     }
-                    var cardFilm = cardTemplate(filmTemplate);
-                    $('.container-card').append(cardFilm);
+                    var cardFilm = cardTemplate(filmTemplate);       // compilo cardFilm con filmTemplate popolata
+                    $('.container-card').append(cardFilm);           // appendo cardFilm al container-card
                 }
-                $('.fa-search, #cerca-film').click(function () {
-                    $('.card').hide();
-                })
             },
             error: function (err) {
                 alert('BOOM');
             }
         });
     });
+
+
+function arrotondaVoto(vote) {                                      // funzione per trasformare il voto da 1 a 5
+    var nuovoVoto = Math.ceil(vote / 2);
+    return nuovoVoto;
+}
