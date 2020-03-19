@@ -2,10 +2,12 @@ var source = $("#card-template").html();
 var cardTemplate = Handlebars.compile(source);
 var apiBaseUrl = 'https://api.themoviedb.org/3';
 
-    $('#cerca-film').change(function () {
+    $('#cerca-film').change(function(){
         var carattereRicerca = $('#cerca-film').val().toLowerCase();
         console.log(carattereRicerca);
+        $('#cerca-film').val('');
         $('.container-card').html("");
+
         $.ajax({
             // url: 'https://api.themoviedb.org/3/search/movie?api_key=e50a20205b1bb8fb469327d3702d0bfd&query=aladin',
             // url: 'https://api.themoviedb.org/3/search/movie',

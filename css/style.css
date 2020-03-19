@@ -8,7 +8,7 @@
 .container-header {
 	height: 80px;
 	width: 100%;
-	background-color: lightgrey;
+	background-color: #004d40;
 }
 .topnav {
 	height: 80px;
@@ -24,8 +24,8 @@
   font-size: 17px;
 }
 .topnav i {
-	padding: 6px;
-	background-color: grey;
+	padding: 8px;
+	background-color: #39796b;
 	color: white;
 }
 .container {
@@ -39,21 +39,36 @@
 	padding: 50px;
 }
 .card {
-	height: 300px;
-	flex-basis: 200px;
+	height: 400px;
+	flex-basis: 300px;
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
-	background-color: grey;
+	align-items: center;
+	background-color: #004d40;
 	border-radius: 10px;
 	margin: 10px;
 }
-.card h3 {
+.card-film {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+.card-film p {
+	padding: 5px 0;
+}
+#titolo {
+	font-size: 20px;
 	color: white;
 }
-.card p {
-	color: white;
+#titolo-orig {
+	color: lightgrey;
+}
+#lingua-orig {
+	color: lightgrey;
+}
+#voto {
+	color: lightgrey;
 }
 .card img {
 	height: 180px;
