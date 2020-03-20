@@ -57,20 +57,38 @@
 .card-film p {
 	padding: 5px 0;
 }
-#titolo {
-	font-size: 20px;
+.titolo {
+	height: 60px;
+	font-size: 18px;
+	display: flex;
+	align-items: center;
 	color: white;
 }
-#titolo-orig {
+.titolo-orig {
+	font-size: 14px;
+	height: 40px;
+	display: flex;
+	align-items: center;
 	color: lightgrey;
 }
-#lingua-orig {
+.lingua-orig {
+	height: 40px;
+	display: flex;
+	align-items: center;
 	color: lightgrey;
 }
-#voto {
-	color: lightgrey;
-}
-.card img {
+.card-film img {
 	height: 180px;
 	margin-bottom: 20px;
+}
+.stars {
+	display: flex;
+	flex-direction: row;
+}
+.checked {
+	color: orange;
+}
+.lingua-orig img {
+	width: 40px;
+	height: 40px;
 }
