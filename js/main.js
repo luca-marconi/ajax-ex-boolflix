@@ -92,7 +92,7 @@ $(document).ready(function() {
                 flag: flags(serie.original_language),
                 vote: stars(serie.vote_average),
                 cover: coverNoImage(serie.poster_path),
-                overview: movie.overview
+                overview: serie.overview
             }
             var serieCard = cardTemplate(infoSerie);       // compilo cardFilm con filmTemplate popolata
             $('.container-card').append(serieCard);           // appendo cardFilm al container-card
