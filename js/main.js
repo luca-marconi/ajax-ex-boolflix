@@ -17,18 +17,19 @@ $(document).ready(function() {
             $('#input-ricerca').val('');                            // resetto l input
             $('.container-card').empty("");                         // pulisco il container dai risultati
             if (queryRicerca.length !== 0) {
-                apiRicerca(queryRicerca);
+                apiRicercaFilm(queryRicerca);
+                apiRicercaSerie(queryRicerca);
             } else {
                 alert('scrivi qualcosa')
             }
     }
 
-    function apiRicerca(queryRicerca) {
-        var apiBaseUrl = 'https://api.themoviedb.org/3';
+    function apiRicercaFilm(queryRicerca) {
+        var apiBaseUrlFilm = 'https://api.themoviedb.org/3';
         $.ajax({
             // url: 'https://api.themoviedb.org/3/search/movie?api_key=e50a20205b1bb8fb469327d3702d0bfd&query=aladin',
             // url: 'https://api.themoviedb.org/3/search/movie',
-            url: apiBaseUrl + '/search/movie',
+            url: apiBaseUrlFilm + '/search/movie',
             data: {
                 api_key: 'e50a20205b1bb8fb469327d3702d0bfd',
                 query: queryRicerca,
@@ -37,7 +38,28 @@ $(document).ready(function() {
             method: 'GET',
             success: function (data) {
                 var movies = data.results;
-                stampaCard(movies)
+                stampaCardMovies(movies)
+            },
+            error: function (err) {
+                alert('BOOM');
+            }
+        });
+    }
+    function apiRicercaSerie(queryRicerca) {
+        var apiBaseUrlSerie = 'https://api.themoviedb.org/3';
+        $.ajax({
+            // url: 'https://api.themoviedb.org/3/search/movie?api_key=e50a20205b1bb8fb469327d3702d0bfd&query=aladin',
+            // url: 'https://api.themoviedb.org/3/search/movie',
+            url: apiBaseUrlSerie + '/search/tv',
+            data: {
+                api_key: 'e50a20205b1bb8fb469327d3702d0bfd',
+                query: queryRicerca,
+                language: 'it-IT'
+            },
+            method: 'GET',
+            success: function (data) {
+                var series = data.results;
+                stampaCardSeries(series)
             },
             error: function (err) {
                 alert('BOOM');
@@ -45,17 +67,32 @@ $(document).ready(function() {
         });
     }
 
-    function stampaCard(movies) {
+    function stampaCardMovies(movies) {
         for (var i = 0; i < movies.length; i++) {
             var movie = movies[i];
-            var infos = {
+            var infoMovie = {
                 title: movie.title,
                 originalTitle: movie.original_title,
                 flag: flags(movie.original_language),
-                vote: stars(movie.vote_average)
+                vote: stars(movie.vote_average),
+                cover: coverNoImage(movie.poster_path)
             }
-            var movieCard = cardTemplate(infos);       // compilo cardFilm con filmTemplate popolata
+            var movieCard = cardTemplate(infoMovie);       // compilo cardFilm con filmTemplate popolata
             $('.container-card').append(movieCard);           // appendo cardFilm al container-card
+        }
+    };
+    function stampaCardSeries(series) {
+        for (var i = 0; i < series.length; i++) {
+            var serie = series[i];
+            var infoSerie = {
+                title: serie.name,
+                originalTitle: serie.original_name,
+                flag: flags(serie.original_language),
+                vote: stars(serie.vote_average),
+                cover: coverNoImage(serie.poster_path)
+            }
+            var serieCard = cardTemplate(infoSerie);       // compilo cardFilm con filmTemplate popolata
+            $('.container-card').append(serieCard);           // appendo cardFilm al container-card
         }
     };
 
@@ -85,8 +122,7 @@ $(document).ready(function() {
                 star = "nothing";
         }
         console.log(stars);
-        return star;
-    }   ;                             // funzione per trasformare il voto da 1 a 5 e convertire il numero in stelle
+        return star;};                             // funzione per trasformare il voto da 1 a 5 e convertire il numero in stelle
 
     function flags(originalLanguage) {
         var flag = originalLanguage;
@@ -127,6 +163,17 @@ $(document).ready(function() {
             default:
             flag = originalLanguage;
         }
-        return flag;
-    };                  // funzione per trasformare la stringa originalLanguage in bandiere
+        return flag;};                  // funzione per trasformare la stringa originalLanguage in bandiere
+
+    function coverNoImage(cover) {
+            console.log(cover);
+            if (cover == null) {
+            cover = 'https://www.rettificheresca.it/wp-content/uploads/img-placeholder.png'
+            } else {
+                cover = 'https://image.tmdb.org/t/p/w342' + cover;
+            }
+        return cover;
+
+    };
+
 });

@@ -39,7 +39,7 @@
 	padding: 50px;
 }
 .card {
-	height: 400px;
+	height: 600px;
 	flex-basis: 300px;
 	padding: 10px;
 	display: flex;
@@ -78,7 +78,8 @@
 	color: lightgrey;
 }
 .card-film img {
-	height: 180px;
+	height: 380px;
+	width: 280px;
 	margin-bottom: 20px;
 }
 .stars {
