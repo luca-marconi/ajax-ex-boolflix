@@ -75,10 +75,12 @@ $(document).ready(function() {
                 originalTitle: movie.original_title,
                 flag: flags(movie.original_language),
                 vote: stars(movie.vote_average),
-                cover: coverNoImage(movie.poster_path)
+                cover: coverNoImage(movie.poster_path),
+                overview: movie.overview
             }
             var movieCard = cardTemplate(infoMovie);       // compilo cardFilm con filmTemplate popolata
             $('.container-card').append(movieCard);           // appendo cardFilm al container-card
+            visible();
         }
     };
     function stampaCardSeries(series) {
@@ -89,7 +91,8 @@ $(document).ready(function() {
                 originalTitle: serie.original_name,
                 flag: flags(serie.original_language),
                 vote: stars(serie.vote_average),
-                cover: coverNoImage(serie.poster_path)
+                cover: coverNoImage(serie.poster_path),
+                overview: movie.overview
             }
             var serieCard = cardTemplate(infoSerie);       // compilo cardFilm con filmTemplate popolata
             $('.container-card').append(serieCard);           // appendo cardFilm al container-card
@@ -166,14 +169,22 @@ $(document).ready(function() {
         return flag;};                  // funzione per trasformare la stringa originalLanguage in bandiere
 
     function coverNoImage(cover) {
-            console.log(cover);
             if (cover == null) {
             cover = 'https://www.rettificheresca.it/wp-content/uploads/img-placeholder.png'
             } else {
                 cover = 'https://image.tmdb.org/t/p/w342' + cover;
             }
         return cover;
-
     };
 
+    function visible() {
+        $('.card').mouseenter(function() {
+            $('.cover', this).hide();
+            $('.info', this).css('visibility', 'visible');
+            });
+        $('.card').mouseleave(function() {
+            $('.cover', this).show();
+            $('.info', this).css('visibility', 'hidden');
+            });
+    }
 });
