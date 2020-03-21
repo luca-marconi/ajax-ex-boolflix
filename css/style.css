@@ -4,11 +4,13 @@
 	margin: 0;
 	padding: 0;
 }
-
+body {
+	background-color: #00838f;
+}
 .container-header {
 	height: 80px;
 	width: 100%;
-	background-color: #004d40;
+	background-color: #005662;
 }
 .topnav {
 	height: 80px;
@@ -25,13 +27,13 @@
 }
 .topnav i {
 	padding: 8px;
-	background-color: #39796b;
+	background-color: #00838f;
 	color: white;
 }
 .container {
 	display: flex;
 	margin: 0 auto;
-	width: 1080px;
+	width: 1500px;
 	height: 100%;
 	flex-wrap: wrap;
 }
@@ -45,7 +47,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	background-color: #004d40;
+	background-color: #005662;
 	border-radius: 10px;
 	margin: 10px;
 }

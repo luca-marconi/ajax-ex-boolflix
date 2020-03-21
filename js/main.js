@@ -124,7 +124,6 @@ $(document).ready(function() {
             default:
                 star = "nothing";
         }
-        console.log(stars);
         return star;};                             // funzione per trasformare il voto da 1 a 5 e convertire il numero in stelle
 
     function flags(originalLanguage) {
