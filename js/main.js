@@ -124,7 +124,20 @@ $(document).ready(function() {
             default:
                 star = "nothing";
         }
-        return star;};                             // funzione per trasformare il voto da 1 a 5 e convertire il numero in stelle
+        return star;};                              // funzione per trasformare il voto da 1 a 5 e convertire il numero in stelle
+    //---soluzione alternativa star------
+    // function stars(vote) {                          // ricevo il voto
+    //     var stringaStelle = '';                     // creo una stringa vuota
+    //     vote = Math.ceil(voto / 2);                 // trasformo il voto in un numero da 1 a 5 approssimato per eccesso
+    //     for (var i = 1; i <= 5; i++) {              // ciclo da 1 al massimo di stelle (5)
+    //         if (i <= vote) {
+    //             stringaStelle += '<i class="fas fa-star"></i>';
+    //         } else {
+    //             stringaStelle += '<i class="far fa-star"></i>';
+    //         }
+    //     }
+    //     return stringaStelle;
+    // }
 
     function flags(originalLanguage) {
         var flag = originalLanguage;
@@ -166,7 +179,17 @@ $(document).ready(function() {
             flag = originalLanguage;
         }
         return flag;};                  // funzione per trasformare la stringa originalLanguage in bandiere
-
+        //---soluzione alternativa flags------
+    // function langToFlag(originalLanguage)   {
+    //     var availableFlags = [
+    //         'en',
+    //         'it'
+    //     ];
+    //     if (availableFlags.includes(originalLanguage)) {
+    //         var flag = 'sorgente immagine';
+    //         return flag;
+    //     }
+    // }
     function coverNoImage(cover) {
             if (cover == null) {
             cover = 'https://www.rettificheresca.it/wp-content/uploads/img-placeholder.png'
