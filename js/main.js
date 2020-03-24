@@ -96,6 +96,7 @@ $(document).ready(function() {
             }
             var serieCard = cardTemplate(infoSerie);       // compilo cardFilm con filmTemplate popolata
             $('.container-card').append(serieCard);           // appendo cardFilm al container-card
+            visible();
         }
     };
 
